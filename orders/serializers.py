@@ -7,4 +7,4 @@ class OrderSerializer(ModelSerializer):
 
     class Meta:
         model = SalesOrder
-        fields = ['amount', 'description']
+        fields = '__all__'
