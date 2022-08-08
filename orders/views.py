@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
 
 from orders.models import SalesOrder
@@ -12,6 +13,8 @@ def orders_page(request):
 class OrderView(ModelViewSet):
     queryset = SalesOrder.objects.all()
     serializer_class = OrderSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['amount']
 
 
 def orders_app(request):
