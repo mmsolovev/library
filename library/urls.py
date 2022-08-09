@@ -18,10 +18,12 @@ from django.urls import path
 from rest_framework.routers import SimpleRouter
 
 from orders.views import orders_page, OrderView, orders_app
+from products.views import BookView
 
 router = SimpleRouter()
 
 router.register(r'orders', OrderView)
+router.register(r'books', BookView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
