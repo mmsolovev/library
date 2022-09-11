@@ -13,8 +13,7 @@ from products.serializers import BookSerializer, UserBookRelationSerializer
 
 class BookView(ModelViewSet):
     queryset = Book.objects.all().annotate(
-            annotted_likes=Count(Case(When(userbookrelation__like=True, then=1))),
-            rating=Avg('userbookrelation__rate')
+            annotted_likes=Count(Case(When(userbookrelation__like=True, then=1)))
         ).order_by('id')
     serializer_class = BookSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
